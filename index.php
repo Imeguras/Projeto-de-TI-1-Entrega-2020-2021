@@ -1,30 +1,35 @@
 <?php
     session_start();
-    $username = "Andre";
-    $password = "password";
-
-    if (isset($_POST['username'])) 
-    {
-        if ($username == $_POST['username'])
-        {
-            echo "Username Confirmado <br>";
-
-            if ($password == $_POST['password'])
-            {    
-                echo $password ."-". $_POST['password'];
-                $_SESSION['username'] = $_POST['username'];
-                header("Location: http://127.0.0.1/ti/dashboard.php");
+    $username = ["Andre", "a"];
+    $password = ["password", "a"];
+    if (isset($_POST['username'])){
+        $cnt=0;
+        foreach ($username as $usr) {
+            
+            if ($usr == $_POST['username'])
+            {
+                echo "Username Confirmado <br>";
+                $cnt++;
+                if ($password[$cnt] == $_POST['password'])
+                {    
+                    echo $password ."-". $_POST['password'];
+                    $_SESSION['username'] = $_POST['username'];
+                    header("Location: http://127.0.0.1/ti/dashboard.php");
+                }
+                else
+                {
+                    echo "Password Errada <br>";
+                }
             }
             else
             {
-                echo "Password Errada <br>";
+                echo "Username Errado";
             }
-        }
-        else
-        {
-            echo "Username Errado";
-        }
+        } 
     }
+    
+    
+       
     
 ?>
 
