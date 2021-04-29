@@ -6,10 +6,8 @@
         die("Acesso restrito");
     }
     $base_path = "api/files/";
-    $hum_path = $base_path."humidade/";
-    $valor_hum = file_get_contents($hum_path . "valor.txt");
-    $hora_hum = file_get_contents($hum_path . "hora.txt");
-    $nome_hum = file_get_contents($hum_path . "nome.txt");
+    $sensors = scandir($base_path);
+    
 ?>
 
 <!DOCTYPE html>
@@ -52,31 +50,37 @@
       </nav>
 
     <div class="jumbotron jumbotron-fluid" style="background-color: light-gray;"> 
-        <h1>Servidor IoT</h1>
-        <p>Tecnologias de Internet - Engenharia Informática</p>
+        <?php
+        $tab = "&nbsp;&nbsp;&nbsp;&nbsp;";
+        echo "<h1>".$tab.$tab."Servidor IoT</h1>
+        <p>".$tab."Tecnologias de Internet - Engenharia Informática</p>";
+        ?>
     </div>
     <div class="container">
         <div class="row">
-            <div class="col-sm-4">
-                <?php
-                    $luz_path = $base_path."luminosidade/";
-                    $valor_luz = file_get_contents($luz_path . "valor.txt");
-                    $hora_luz = file_get_contents($luz_path . "hora.txt");
-                    $nome_luz = file_get_contents($luz_path . "nome.txt");
+            <?php
+                foreach($sensors as $sensor){
+                    $s_path = $base_path.$sensor."/";
+                    $s_valor = file_get_contents($s_path . "valor.txt");
+                    $s_hora = file_get_contents($s_path . "hora.txt");
+                    $s_nome = file_get_contents($s_path . "nome.txt");
                     echo '
-                    <div class="card">
-                        <div class="card-header">
-                            '.$nome_luz.': '.$valor_luz.'
-                        </div>
-                        <div class="card-body">
-                            <img src="Ficheiros(img, vid, etc)/dia.png" alt="">
-                        </div>
-                        <div class="card-footer">
-                            Atualização:'.$hora_luz.' <a href="#">Histórico</a>
+                    <div class="col-sm-4">
+                        <div class="card">
+                            <div class="card-header">
+                                '.$s_nome.': '.$s_valor.'
+                            </div>
+                            <div class="card-body">
+                                <img src="Ficheiros(img, vid, etc)/dia.png" alt="">
+                            </div>
+                            <div class="card-footer">
+                                Atualização:'.$s_hora.' <a href="#">Histórico</a>
+                            </div>
                         </div>
                     </div>'
+                }
                 ?>
-            </div>
+            
             <div class="col-sm-4">
                 <?php
                     $temp_path = $base_path."temperatura/";
