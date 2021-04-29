@@ -5,11 +5,10 @@
     if (isset($_POST['username'])){
         $cnt=0;
         foreach ($username as $usr) {
-            
             if ($usr == $_POST['username'])
             {
                 echo "Username Confirmado <br>";
-                $cnt++;
+                
                 if ($password[$cnt] == $_POST['password'])
                 {    
                     echo $password ."-". $_POST['password'];
@@ -21,11 +20,9 @@
                     echo "Password Errada <br>";
                 }
             }
-            else
-            {
-                echo "Username Errado";
-            }
+            $cnt++;
         } 
+        echo "Username Errado";
     }
     
     
