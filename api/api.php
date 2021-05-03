@@ -17,7 +17,7 @@
     elseif ($_SERVER['REQUEST_METHOD'] == "POST")
     {
         echo "POST recieved";
-        if (isset($_POST["nome"]) and isset($_POST["valor"]) and isset($_POST["hora"]) )
+        if (isset($_POST["nome"]) and isset($_POST["valor"]) and isset($_POST["hora"]))
         {
             $name = $_POST["nome"];
             $value = $_POST["valor"];

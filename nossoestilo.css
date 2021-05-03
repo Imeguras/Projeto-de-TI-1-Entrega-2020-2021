@@ -1,0 +1,81 @@
+*{
+    overflow: hidden;
+}
+.colunaDireita{
+    position: absolute;
+    width: 734px;
+    height: 1080px;
+    left: 1186px;
+    top: 0px;
+}
+.colunaEsquerda{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 18px 12px;
+    overflow-y: scroll !important;
+    position: absolute;
+    width: 1186px;
+    height: 1439px;
+    left: 0px;
+    top: 0px;
+}
+.paginaColunaEsquerda{
+    position: static;
+    width: 926px;
+    height: min-content; 
+    left: 130px;
+    top: 157px;
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+    margin: 20px 0px;
+}
+
+.tituloColunaEsquerda{
+    display: contents;
+    position: relative;
+    width: max-content;
+    height: 119px;
+    left: 26px;
+    top: 18px;
+    margin: 20px 0px;
+}
+
+.grupoTitulo{
+    /*position: absolute;*/
+    width: max-content;
+    display: block;
+    position: absolute;
+    left: 5%;
+
+}
+.textoTituloColunaEsquerda{
+    position: relative;
+    /*width: 580px;
+    height: 105px;
+    left: 201.29px;
+    top: 18px;*/
+    font-family: Nunito;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 80px;
+    line-height: 109px;
+    color: #000000;
+}
+
+.decoracaoTitulo{
+    position: relative;
+    width: auto;
+    height: 20px;
+    top: 99px;
+    background: rgba(255, 169, 0, 0.2);
+    border-radius: 50px;
+}
+.setaBody{
+    width: 55px;
+    height: 80%;
+    border-radius: 0px 0px 0px 40px;
+    border-color: transparent transparent #000 #000 !important;
+    border: 5px solid #000;
+}

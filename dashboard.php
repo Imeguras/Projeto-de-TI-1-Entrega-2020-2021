@@ -6,8 +6,7 @@
         die("Acesso restrito");
     }
     $base_path = "api/files/";
-    $sensors = scandir($base_path);
-    
+    $sensors = array_diff(scandir($base_path), array("..","."));
 ?>
 
 <!DOCTYPE html>
@@ -59,7 +58,10 @@
     <div class="container">
         <div class="row">
             <?php
-                foreach($sensors as $sensor){
+                $ct=0;
+                foreach($sensors as $sensor)
+                {
+                    $ct++;
                     $s_path = $base_path.$sensor."/";
                     $s_valor = file_get_contents($s_path . "valor.txt");
                     $s_hora = file_get_contents($s_path . "hora.txt");
@@ -71,55 +73,24 @@
                                 '.$s_nome.': '.$s_valor.'
                             </div>
                             <div class="card-body">
-                                <img src="Ficheiros(img, vid, etc)/dia.png" alt="">
+                                <a href=""><img src="Ficheiros/'.$sensor.'.png" alt="" width="128" height="128"><a>
                             </div>
                             <div class="card-footer">
-                                Atualização:'.$s_hora.' <a href="#">Histórico</a>
+                                Atualização: '.$s_hora.'
                             </div>
                         </div>
-                    </div>'
+                    </div>';
+                    if($ct%3==0)
+                    {
+                        echo'
+                        </div>
+                        <br>
+                        <div class="row">';
+                    }
                 }
-                ?>
-            
-            <div class="col-sm-4">
-                <?php
-                    $temp_path = $base_path."temperatura/";
-                    $valor_temp = file_get_contents($temp_path . "valor.txt");
-                    $hora_temp = file_get_contents($temp_path . "hora.txt");
-                    $nome_temp = file_get_contents($temp_path . "nome.txt");
-                    echo '
-                    
-                        <div class="card">
-                            <div class="card-header"> 
-                            '.$nome_temp.': '.$valor_temp.'º
-                            </div>
-                            <div class="card-body">
-                                <img src="Ficheiros(img, vid, etc)/temperature.png" alt="">
-                            </div>
-                            <div class="card-footer">
-                                Atualização:'. $hora_temp.' <a href="#">Histórico</a>
-                            </div>
-                        </div> 
-                    </div>'
-                ?>
-            <div class="col-sm-4">
-                <?php
-                    echo '
-                    <div class="card">
-                        <div class="card-header">
-                            Porta:
-                        </div>
-                        <div class="card-body">
-                            <img src="Ficheiros(img, vid, etc)/door.png" alt="">
-                        </div>
-                        <div class="card-footer">
-                            Atualização: <a href="#">Histórico</a>
-                        </div>
-                    </div>'
-                ?>
-            </div>
-            
+            ?>  
         </div>
+        <br>
         <div class="card">
             <div class="card-header">
                 Tabela de sensores
@@ -127,39 +98,28 @@
             <div class="card-body">
                 <table class="table" style="text-align:left">
                 <?php
-                echo '
+                    echo '
                     <tr>
                         <th>Tipo de Dispotsitivo IoT</th>
                         <th>Valor</th>
                         <th>Data de atualizacao</th>
                         <th>Estado Alertas</th>
-                    </tr>
-                    <tr>
-                        <td>Sensor de Luz</td>
-                        <td>1000</td>
-                        <td>Data de atualizacao</td>
-                        <td><span class="badge badge-success">Ativo</span></td>
-                    </tr>
-                    <tr>
-                        <td>'.$nome_temp.'</td>
-                        <td>'.$valor_temp.'º</td>
-                        <td>'.$hora_temp.'</td>
-                        <td><span class="badge badge-danger">Desativo</span></td>
-                    </tr>
-                    <tr>
-                        <td>'.$nome_hum.'</td>
-                        <td>'.$valor_hum.'</td>
-                        <td>'.$hora_hum.'</td>
-                        <td><span class="badge badge-warning">Warning</span></td>
-                    </tr>
-                    <tr>
-                        <td>'.$nome_luz.'</td>
-                        <td>'.$valor_luz.'</td>
-                        <td>'.$hora_luz.'</td>
-                        <td><span class="badge badge-danger">Muito Forte</span></td>
-                    </tr>
-                    '
-                    ?>
+                    </tr>';
+                    foreach($sensors as $sensor)
+                    {
+                        $s_path = $base_path.$sensor."/";
+                        $s_valor = file_get_contents($s_path . "valor.txt");
+                        $s_hora = file_get_contents($s_path . "hora.txt");
+                        $s_nome = file_get_contents($s_path . "nome.txt");
+                        echo'
+                            <tr>
+                                <td>'.$s_nome.'</td>
+                                <td>'.$s_valor.'</td>
+                                <td>'.$s_hora.'</td>
+                                <td><span class="badge badge-success">Ativo</span></td>
+                            </tr> ';
+                    }
+                ?>
                 </table>
             </div>
         </div> 
