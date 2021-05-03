@@ -25,19 +25,33 @@
 	<body>
 		<div class="colunaEsquerda" id="coluna1">
 			<div class="paginaColunaEsquerda" id="paginaColuna1">
-			
+				<div class="tabela" id="paginaTabela1">
+					<div class="separadorTabela" id="separadorTabela1"> 
+						<div class="grupoData" id="Data1">
+							<div class="decoracaoData" id="decoracaoData1"> </div>
+							<div class="textoData" id="textoData1">19/4/2020</div>
+						</div>
+						<div class="decoracaoSeparador" id="decoracaoSeparador1">
+							<div class="circuloDecoracaoSeparador">
+							</div>
+							<div class="barraDecoracaoSeparador">
+							</div>
+						</div>
+					</div>
+				</div>
 			</div>
 			<div class="tituloColunaEsquerda" id="tituloColuna1">
-				<div class="grupoTitulo" id="grupoTitulo1">
-					<div class="decoracaoTitulo" id="decoracaoTitulo1"> </div>
-					<div class="textoTituloColunaEsquerda" id="textoTituloColuna1">Sensor</div>
-				</div>
 				<div>
-					<div class="setaBody">
+					<div class="setaBody" style="left: 10px;position: absolute;">
 					</div>
 					<div class="setaCabeca">
 					</div>
 				</div>
+				<div class="grupoTitulo" id="grupoTitulo1">
+					<div class="decoracaoTitulo" id="decoracaoTitulo1"> </div>
+					<div class="textoTituloColunaEsquerda" id="textoTituloColuna1">Sensor</div>
+				</div>
+				
 				<!--div id="paddingAapagar1"-->
 				</div>
 			</div>
