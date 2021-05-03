@@ -85,6 +85,8 @@
     height: 908px;
     left: 130px;
     top: 206px;
+    display: flex;
+    flex-direction: column;
 }
 .separadorTabela{
     display: flex;
@@ -161,4 +163,82 @@
     top: 12px;
     background: rgba(0, 0, 0, 0.2);
     border-radius: 50px;
+}
+.SubTabela{
+    position: relative;
+    width: 525px;
+    height: 385px;
+    left: 79px;
+    top: 61px;
+
+}
+.Entrada{
+    display: flex;
+    flex-direction: row;
+    
+}
+.Tempo{
+    width: max-content;
+    display: block;
+    position: relative;
+}
+.decoracaoTempo1{
+    position: relative;
+    width: auto;
+    height: 15px;
+    top: 45px;
+    background: rgba(0, 155, 149, 0.2);
+    border-radius: 50px;
+}
+.decoracaoTempo2{
+    position: relative;
+    width: auto;
+    height: 15px;
+    top: 45px;
+    background: rgba(0, 94, 90, 0.4);
+    border-radius: 50px;
+}
+
+.textoTempo{
+    position: relative;
+    height: 43px;
+    font-family: KoHo;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 40px;
+    line-height: 52px;
+    color: #000000;
+}
+.Info{
+    width: 75%;
+    margin-inline: 20px;
+}
+.decoracaoInfo1{
+    /*width: 397px;
+    height: 25px;
+    background: rgba(53, 92, 175, 0.6);
+    border: 1px solid rgba(53, 92, 175, 0.0); 
+    border-radius: 0px 50px 50px 100px;/*0px 100px 100px 100px;*/
+    /*border-top-left-radius: 0px !important;*/
+    /*z-index:5;
+    position: absolute;*/
+    width: 397px;
+    height: 25px;
+    background: rgba(53, 92, 175, 0.6);
+    border: 1px solid rgba(53, 92, 175, 0.0); 
+    border-radius: 0px 50px 50px 100px;
+    z-index:5;
+    position: absolute
+}
+.textoInfo{
+    z-index:0;
+    width: 100%;
+    height: min-content;
+    font-family: KoHo;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 30px;
+    line-height: 48px;
+    text-align: center;
+    color: #000000;
 }
