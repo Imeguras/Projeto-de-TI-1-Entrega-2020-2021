@@ -13,7 +13,7 @@
                 {    
                     echo $password ."-". $_POST['password'];
                     $_SESSION['username'] = $_POST['username'];
-                    header("Location: http://127.0.0.1:5555/dashboard.php"); //critical: mudar isto
+                    header("Location: dashboard.php"); //critical: mudar isto
                 }
                 else
                 {
