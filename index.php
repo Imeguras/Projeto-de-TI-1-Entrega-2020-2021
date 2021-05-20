@@ -24,10 +24,6 @@
         } 
         echo "Username Errado";
     }
-    
-    
-       
-    
 ?>
 
 <!DOCTYPE html>
