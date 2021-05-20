@@ -6,7 +6,6 @@
     width: 734px;
     height: 1080px;
     left: 1186px;
-    top: 0px;
 }
 .colunaEsquerda{
     display: flex;
@@ -17,8 +16,6 @@
     position: absolute;
     width: 1186px;
     height: 1439px;
-    left: 0px;
-    top: 0px;
 }
 .paginaColunaEsquerda{
     position: static;
@@ -93,13 +90,7 @@
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    padding: 0px;
-
-    position: absolute;
-    /*width: 926px;
-    height: 62px;
-    left: 130px;
-    top: 206px;*/
+    position: relative;
     width: 100%;
     height: 62px;
 }
@@ -119,11 +110,6 @@
 }
 .textoData{
     position: relative;
-    /*width: 201px;
-    height: 47px;
-    left: 725px;
-    top: 0px;
-    */
     height:76px;
     font-family: KoHo;
     font-style: normal;
@@ -138,19 +124,16 @@
     position: relative;
     width: 725px;
     height: 32px;
-    left: 0px;
     top: 15px;
     flex: none;
     order: 0;
     flex-grow: 0;
-    margin: 0px 0px;
 }
 .circuloDecoracaoSeparador{
     position: absolute;
     width: 32px;
     height: 32px;
     left: 675px;
-    top: 0px;
     background: #FFFFFF;
     border: 5px solid #000000;
     border-radius: 50px;
@@ -159,7 +142,6 @@
     position: absolute;
     width: 655px;
     height: 15px;
-    left: 0px;
     top: 12px;
     background: rgba(0, 0, 0, 0.2);
     border-radius: 50px;
@@ -174,8 +156,7 @@
 }
 .Entrada{
     display: flex;
-    flex-direction: row;
-    
+    flex-direction: row;   
 }
 .Tempo{
     width: max-content;
@@ -214,14 +195,6 @@
     margin-inline: 20px;
 }
 .decoracaoInfo1{
-    /*width: 397px;
-    height: 25px;
-    background: rgba(53, 92, 175, 0.6);
-    border: 1px solid rgba(53, 92, 175, 0.0); 
-    border-radius: 0px 50px 50px 100px;/*0px 100px 100px 100px;*/
-    /*border-top-left-radius: 0px !important;*/
-    /*z-index:5;
-    position: absolute;*/
     width: 397px;
     height: 25px;
     background: rgba(53, 92, 175, 0.6);
@@ -230,8 +203,23 @@
     z-index:5;
     position: absolute
 }
+.decoracaoInfo1{
+    width: 397px;
+    height: 25px;
+    background: rgba(53, 92, 175, 0.6);
+    border: 1px solid rgba(53, 92, 175, 0.0); 
+    border-radius: 0px 50px 50px 100px;
+    position: absolute
+}
+.decoracaoInfo2{
+    width: 397px;
+    height: 25px;
+    background: rgba(53, 92, 175, 0.6);
+    border: 1px solid rgba(53, 92, 175, 0.0); 
+    border-radius: 0px 50px 50px 100px;
+    position: absolute
+}
 .textoInfo{
-    z-index:0;
     width: 100%;
     height: min-content;
     font-family: KoHo;
