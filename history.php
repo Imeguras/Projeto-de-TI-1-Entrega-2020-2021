@@ -26,7 +26,7 @@
 		<div class="colunaEsquerda" id="coluna1">
 			<div class="paginaColunaEsquerda" id="paginaColuna1">
 				<div class="tabela" id="paginaTabela1">
-					<div class="separadorTabela" id="separadorTabela1"> 
+					<!--div class="separadorTabela" id="separadorTabela1"> 
 						<div class="decoracaoSeparador" id="decoracaoSeparador1">
 							<div class="circuloDecoracaoSeparador">
 							</div>
@@ -37,8 +37,8 @@
 							<div class="decoracaoData" id="decoracaoData1"> </div>
 							<div class="textoData" id="textoData1">19/4/2020</div>
 						</div>
-					</div>
-					<div class="SubTabela" id="SubTabela1">
+					</div-->
+					<!--div class="SubTabela" id="SubTabela1">
 						<div class="Entrada" id="Entrada1">
 							<div class="Tempo" id="Tempo1">
 								<div class="decoracaoTempo1" id="decoracaoData1"> </div>
@@ -56,7 +56,7 @@
 							</div>
 							
 						</div>
-					</div>
+					</div-->
 				</div>
 			</div>
 			<div class="tituloColunaEsquerda" id="tituloColuna1">

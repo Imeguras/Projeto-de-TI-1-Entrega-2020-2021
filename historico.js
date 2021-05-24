@@ -50,21 +50,30 @@ function returntxtContents() {
         texto=texto.split(/\r\n|\r|\n/);
         let goal=texto.length;
         //boogaloo codigo
+        let dataC=0;
+        let horaC=0;
+        let valorsC=0;
         let oldd="";
-        for (let index = 0; index < goal; index++) {
+        let olddd=""; 
+        for (let index = 0; index < goal-1; index++) {
             
             linha=texto[index].split(/ |;/);
             if(oldd!=linha[0]){
                 oldd=linha[0]
-                document.getElementById("paginaTabela1").innerHTML+='<div class="separadorTabela" id="separadorTabela1">\n\t<div class="decoracaoSeparador" id="decoracaoSeparador1">\n\t\t<div class="circuloDecoracaoSeparador">\n\t\t</div>\n\t\t<div class="barraDecoracaoSeparador">\n\t\t</div>\n\t</div>\n\t<div class="grupoData" id="Data1">\n\t\t<div class="decoracaoData" id="decoracaoData1"> </div>\n\t\t<div class="textoData" id="textoData1">'+linha[0]+'</div>\n\t</div>\n</div>'
+                dataC++;
+                document.getElementById("paginaTabela1").innerHTML+='<div class="separadorTabela" id="separadorTabela'+dataC+'">\n\t<div class="decoracaoSeparador" id="decoracaoSeparador'+dataC+'">\n\t\t<div class="circuloDecoracaoSeparador">\n\t\t</div>\n\t\t<div class="barraDecoracaoSeparador">\n\t\t</div>\n\t</div>\n\t<div class="grupoData" id="Data'+dataC+'">\n\t\t<div class="decoracaoData" id="decoracaoData'+dataC+'"> </div>\n\t\t<div class="textoData" id="textoData'+dataC+'">'+linha[0]+'</div>\n\t</div>\n</div>\n<div class="SubTabela" id="SubTabela'+Math.floor(horaC/6)+1+'"></div>'
             }
+            let disp=linha[1].split(":");
+            //todo if pair class is dif
+            document.getElementById("SubTabela"+Math.floor(horaC/6)+1).innerHTML+='<div class="Entrada" id="Entrada'+horaC+'">\n<div class="Tempo" id="Tempo'+horaC+'">\n\t<div class="decoracaoTempo1" id="decoracaoData'+horaC+'"> </div>\n\t<div class="textoTempo" id="textoTempo'+horaC+'">'+disp[0]+':'+disp[1]+'</div>\n</div>\n<div class="Info" id="Info'+horaC+'">\n\t<div class="decoracaoInfo1" id="decoracaoInfo'+horaC+'"> </div>\n\t<div class="textoInfo" id="textoInfo1">'+disp[2]+'s:'+linha[2]+'</div>\n</div>\n</div>';
+            horaC++;
             /*
             Debug 
             console.log("dia:"+linha[0]);
             console.log("hora:"+linha[1]);
             console.log("valor:"+linha[2]);
             */
-
+            
         }
     }
 }
