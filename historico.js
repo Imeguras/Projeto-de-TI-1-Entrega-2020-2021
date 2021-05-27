@@ -60,13 +60,12 @@ function returntxtContents() {
         let oldd="";
         let olddd=""; 
         for (let index = 0; index < goal-1; index++) {
-            
             linha=texto[index].split(/ |;/);
             if(oldd!=linha[0]){
                 oldd=linha[0]
                 dataC++;
                 salto++;
-                document.getElementById("paginaTabela1").innerHTML+='<div class="separadorTabela" id="separadorTabela'+dataC+'">\n\t<div style="display:none;"id="subTabelaSumario'+dataC+'"></div>\n\t<div class="decoracaoSeparador" id="decoracaoSeparador'+dataC+'">\n\t\t<div class="circuloDecoracaoSeparador">\n\t\t</div>\n\t\t<div class="barraDecoracaoSeparador">\n\t\t</div>\n\t</div>\n\t<div class="grupoData" id="Data'+dataC+'">\n\t\t<div class="decoracaoData" id="decoracaoData'+dataC+'"> </div>\n\t\t<div class="textoData" id="textoData'+dataC+'">'+linha[0]+'</div>\n\t</div>\n</div>\n<div class="SubTabela" id="subTabela'+Math.floor(horaC/6)+salto+'"></div>'
+                document.getElementById("paginaTabela1").innerHTML+='<div class="blocoTabela" id="blocoTabela'+dataC+'" > <div class="separadorTabela" id="separadorTabela'+dataC+'">\n\t<div style="display:none;"id="subTabelaSumario'+dataC+'"></div>\n\t<div class="decoracaoSeparador" id="decoracaoSeparador'+dataC+'">\n\t\t<div class="circuloDecoracaoSeparador">\n\t\t</div>\n\t\t<div class="barraDecoracaoSeparador">\n\t\t</div>\n\t</div>\n\t<div class="grupoData" id="Data'+dataC+'">\n\t\t<div class="decoracaoData" id="decoracaoData'+dataC+'"> </div>\n\t\t<div class="textoData" id="textoData'+dataC+'">'+linha[0]+'</div>\n\t</div>\n</div>\n<div class="SubTabela" id="subTabela'+(Math.floor(horaC/6)+salto)+'"></div></div>'
             }
             let disp=linha[1].split(":");
             //todo if pair class is dif
@@ -76,9 +75,9 @@ function returntxtContents() {
                 olddd=disp[0]+':'+disp[1]
                 valorsC=horaC;
                 if(Math.floor(horaC/6)==horaC/6){
-                    document.getElementById("paginaTabela1").innerHTML+='<div class="SubTabela" id="subTabela'+(Math.floor(horaC/6)+salto)+'"></div>'
+                    document.getElementById("blocoTabela"+dataC).innerHTML+='<div class="SubTabela" id="subTabela'+(Math.floor(horaC/6)+salto)+'"></div>'
                 }
-                document.getElementById("subTabela"+(Math.floor(horaC/6)+salto)).innerHTML+='<div class="Entrada" id="Entrada'+horaC+'">\n<div class="Tempo" id="Tempo'+horaC+'">\n\t<div class="decoracaoTempo1" id="decoracaoData'+horaC+'"> </div>\n\t<div class="textoTempo" id="textoTempo'+horaC+'">'+disp[0]+':'+disp[1]+'</div>\n</div>\n<div class="Info" id="Info'+horaC+'">\n\t<div class="decoracaoInfo1" id="decoracaoInfo'+horaC+'"> </div>\n\t<div class="textoInfo" id="textoInfo'+horaC+'">'+disp[2]+'s:'+linha[2]+';'+'</div>\n</div>\n</div>';
+                document.getElementById('subTabela'+(Math.floor(horaC/6)+salto)).innerHTML+='<div class="Entrada" id="Entrada'+horaC+'">\n<div class="Tempo" id="Tempo'+horaC+'">\n\t<div class="decoracaoTempo1" id="decoracaoData'+horaC+'"> </div>\n\t<div class="textoTempo" id="textoTempo'+horaC+'">'+disp[0]+':'+disp[1]+'</div>\n</div>\n<div class="Info" id="Info'+horaC+'">\n\t<div class="decoracaoInfo1" id="decoracaoInfo'+horaC+'"> </div>\n\t<div class="textoInfo" id="textoInfo'+horaC+'">'+disp[2]+'s:'+linha[2]+';'+'</div>\n</div>\n</div>';
                 document.getElementById("subTabelaSumario"+dataC).innerHTML+=linha[2]+';'
                 horaC++;
                 rep=0;
@@ -100,5 +99,17 @@ function returntxtContents() {
     }
 }
 generateChart(3)
+/*block.addEventListener('mouseover', changeDefOver);
+.addEventListener('mouseout', changeDefOut);
+
+function changeDefOver(e) {
+    generateChart(3)
+    e.target.classList.toggle('opacity-toggle');
+}
+
+function changeDefOut(e) {
+  e.target.classList.toggle('opacity-toggle');
+}*/
+
 //console.log(texto[index])
 loadFile("api/files/botao/log.txt")

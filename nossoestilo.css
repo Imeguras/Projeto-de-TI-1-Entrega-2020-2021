@@ -15,12 +15,12 @@
     overflow-y: scroll !important;
     position: absolute;
     width: 1186px;
-    height: 1439px;
+    height: 4000px;
 }
 .paginaColunaEsquerda{
     position: static;
     width: 926px;
-    height: min-content; 
+    height: inherit;
     order: 1;
     flex-grow: 0;
     margin: 20px 0px;
@@ -46,10 +46,6 @@
 }
 .textoTituloColunaEsquerda{
     position: relative;
-    /*width: 580px;
-    height: 105px;
-    left: 201.29px;
-    top: 18px;*/
     font-family: Nunito;
     font-style: normal;
     font-weight: normal;
@@ -76,7 +72,7 @@
 .tabela{
     position: absolute;
     width: 926px;
-    height: 908px;
+    height: inherit;
     left: 130px;
     top: 206px;
     display: flex;
@@ -91,6 +87,9 @@
     width: 100%;
     height: max-content;
     padding-top: 20px;
+}
+.blocoTabela{
+    
 }
 .grupoData{
     width: max-content;
@@ -149,8 +148,8 @@
     width: 525px;
     height: min-content;
     left: 79px;
-    top: 61px;
-    height: min-content;
+    margin-top: 31px;
+    margin-bottom: 31px;
 }
 .Entrada{
     display: flex;
