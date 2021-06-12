@@ -107,17 +107,30 @@
                     </tr>';
                     foreach($sensors as $sensor)
                     {
+                        $val = 0;
+                        $s_range = ["min" => 0, "max" => 0, "critical"=> 0];
                         $s_path = $base_path.$sensor."/";
                         $s_valor = file_get_contents($s_path . "valor.txt");
                         $s_hora = file_get_contents($s_path . "hora.txt");
                         $s_nome = file_get_contents($s_path . "nome.txt");
+                        $ranges = file_get_contents($s_path . "range.txt");
+                        
                         echo'
                             <tr>
                                 <td>'.$s_nome.'</td>
                                 <td>'.$s_valor.'</td>
                                 <td>'.$s_hora.'</td>
-                                <td><span class="badge badge-success">Ativo</span></td>
-                            </tr> ';
+                                <td>
+                                    <div class="btn-group dropright">
+                                        <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            Dropright
+                                        </button>
+                                        <div class="dropdown-menu">
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr> 
+                            '. var_dump($s_range);
                     }
                 ?>
                 </table>
