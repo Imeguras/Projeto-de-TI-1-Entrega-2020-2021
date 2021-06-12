@@ -65,12 +65,10 @@ function returntxtContents() {
                 oldd=linha[0]
                 dataC++;
                 salto++;
-                document.getElementById("paginaTabela1").innerHTML+='<div class="blocoTabela" id="blocoTabela'+dataC+'" > <div class="separadorTabela" id="separadorTabela'+dataC+'">\n\t<div style="display:none;"id="subTabelaSumario'+dataC+'"></div>\n\t<div class="decoracaoSeparador" id="decoracaoSeparador'+dataC+'">\n\t\t<div class="circuloDecoracaoSeparador">\n\t\t</div>\n\t\t<div class="barraDecoracaoSeparador">\n\t\t</div>\n\t</div>\n\t<div class="grupoData" id="Data'+dataC+'">\n\t\t<div class="decoracaoData" id="decoracaoData'+dataC+'"> </div>\n\t\t<div class="textoData" id="textoData'+dataC+'">'+linha[0]+'</div>\n\t</div>\n</div>\n<div class="SubTabela" id="subTabela'+(Math.floor(horaC/6)+salto)+'"></div></div>'
+                document.getElementById("paginaTabela1").innerHTML+='<div class="blocoTabela" id="blocoTabela'+dataC+'" > <div class="separadorTabela" id="separadorTabela'+dataC+'">\n\t<div class="subTabelaSumario" id="subTabelaSumario'+dataC+'"></div>\n\t<div class="decoracaoSeparador" id="decoracaoSeparador'+dataC+'">\n\t\t<div class="circuloDecoracaoSeparador">\n\t\t</div>\n\t\t<div class="barraDecoracaoSeparador">\n\t\t</div>\n\t</div>\n\t<div class="grupoData" id="Data'+dataC+'">\n\t\t<div class="decoracaoData" id="decoracaoData'+dataC+'"> </div>\n\t\t<div class="textoData" id="textoData'+dataC+'">'+linha[0]+'</div>\n\t</div>\n</div>\n<div class="SubTabela" id="subTabela'+(Math.floor(horaC/6)+salto)+'"></div></div>'
             }
             let disp=linha[1].split(":");
             //todo if pair class is dif
-            console.log(olddd);
-            console.log(linha[1]);
             if(olddd!=disp[0]+':'+disp[1]||rep>=2){
                 olddd=disp[0]+':'+disp[1]
                 valorsC=horaC;
@@ -99,17 +97,23 @@ function returntxtContents() {
     }
 }
 generateChart(3)
-/*block.addEventListener('mouseover', changeDefOver);
-.addEventListener('mouseout', changeDefOut);
-
-function changeDefOver(e) {
-    generateChart(3)
-    e.target.classList.toggle('opacity-toggle');
+var block = document.getElementsByClassName("blocoTabela");
+/*block.forEach(function(element){
+    
+});
+*/
+for (let index = 0; index < block.length; index++) {
+    let element = block[index];
+    element.addEventListener('onmouseenter', changeDefOver);
 }
 
-function changeDefOut(e) {
-  e.target.classList.toggle('opacity-toggle');
-}*/
+function changeDefOver(e) {
+    //
+    console.log(e.getElementsByClassName("subTabelaSumario1")[0].innerHTML)
+    generateChart(e.getElementsByClassName("subTabelaSumario1")[0].innerHTML)
+    //e.target.classList.toggle('opacity-toggle');
+}
+
 
 //console.log(texto[index])
 loadFile("api/files/botao/log.txt")

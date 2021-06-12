@@ -69,6 +69,10 @@
     border-color: transparent transparent #000 #000 !important;
     border: 5px solid #000;
 }
+.subTabelaSumario{
+    display:none;
+
+}
 .tabela{
     position: absolute;
     width: 926px;
@@ -89,7 +93,9 @@
     padding-top: 20px;
 }
 .blocoTabela{
-    
+    position: relative;
+    display: flex;
+    flex-direction: column;
 }
 .grupoData{
     width: max-content;
