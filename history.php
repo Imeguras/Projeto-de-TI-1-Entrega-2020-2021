@@ -26,37 +26,6 @@
 		<div class="colunaEsquerda" id="coluna1">
 			<div class="paginaColunaEsquerda" id="paginaColuna1">
 				<div class="tabela" id="paginaTabela1">
-					<div class="separadorTabela" id="separadorTabela1"> 
-						<div class="decoracaoSeparador" id="decoracaoSeparador1">
-							<div class="circuloDecoracaoSeparador">
-							</div>
-							<div class="barraDecoracaoSeparador">
-							</div>
-						</div>
-						<div class="grupoData" id="Data1">
-							<div class="decoracaoData" id="decoracaoData1"> </div>
-							<div class="textoData" id="textoData1">19/4/2020</div>
-						</div>
-					</div>
-					<div class="SubTabela" id="SubTabela1">
-						<div class="Entrada" id="Entrada1">
-							<div class="Tempo" id="Tempo1">
-								<div class="decoracaoTempo1" id="decoracaoData1"> </div>
-								<div class="textoTempo" id="textoTempo1">00:00</div>
-							</div>
-							<div class="Info" id="Info1">
-								<div class="decoracaoInfo1" id="decoracaoInfo1"> </div>
-								<div class="textoInfo" id="textoInfo1">Bom dia isto ta a func</div>
-							</div>
-						</div>
-						<div class="Entrada" id="Entrada2">
-							<div class="Tempo" id="Tempo2">
-								<div class="decoracaoTempo2" id="decoracaoData2"> </div>
-								<div class="textoTempo" id="textoTempo2">00:20</div>
-							</div>
-							
-						</div>
-					</div>
 				</div>
 			</div>
 			<div class="tituloColunaEsquerda" id="tituloColuna1">

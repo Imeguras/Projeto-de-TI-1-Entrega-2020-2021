@@ -5,8 +5,10 @@
         header("refresh:5; url=index.php");
         die("Acesso restrito");
     }
-    $base_path = "api/files/";
-    $sensors = array_diff(scandir($base_path), array("..","."));
+    $sensors_path =  "api/files/sensores/";
+    $actuators_path =  "api/files/atuadores/";
+    $sensors = array_diff(scandir($sensors_path), array("..","."));
+    $actuators = array_diff(scandir($actuators_path), array("..","."));
 ?>
 
 <!DOCTYPE html>
@@ -62,7 +64,7 @@
                 foreach($sensors as $sensor)
                 {
                     $ct++;
-                    $s_path = $base_path.$sensor."/";
+                    $s_path = $sensors_path.$sensor."/";
                     $s_valor = file_get_contents($s_path . "valor.txt");
                     $s_hora = file_get_contents($s_path . "hora.txt");
                     $s_nome = file_get_contents($s_path . "nome.txt");
@@ -91,38 +93,41 @@
             ?>  
         </div>
         <br>
-        <div class="card">
-            <div class="card-header">
-                Tabela de sensores
-            </div>
-            <div class="card-body">
-                <table class="table" style="text-align:left">
-                <?php
+        <hr>
+        <div class="row">
+            <?php
+                $ct=0;
+                foreach($actuators as $actuator)
+                {
+                    $ct++;
+                    $a_path = $actuators_path.$actuator."/";
+                    $a_valor = file_get_contents($a_path . "valor.txt");
+                    $a_hora = file_get_contents($a_path . "hora.txt");
+                    $a_nome = file_get_contents($a_path . "nome.txt");
                     echo '
-                    <tr>
-                        <th>Tipo de Dispotsitivo IoT</th>
-                        <th>Valor</th>
-                        <th>Data de atualizacao</th>
-                        <th>Estado Alertas</th>
-                    </tr>';
-                    foreach($sensors as $sensor)
+                    <div class="col-sm-4">
+                        <div class="card">
+                            <div class="card-header">
+                                '.$s_nome.': '.$s_valor.'
+                            </div>
+                            <div class="card-body">
+                                <a href=""><img src="Ficheiros/'.$sensor.'.png" alt="" width="128" height="128"><a>
+                            </div>
+                            <div class="card-footer">
+                                Atualização: '.$s_hora.'
+                            </div>
+                        </div>
+                    </div>';
+                    if($ct%3==0)
                     {
-                        $s_path = $base_path.$sensor."/";
-                        $s_valor = file_get_contents($s_path . "valor.txt");
-                        $s_hora = file_get_contents($s_path . "hora.txt");
-                        $s_nome = file_get_contents($s_path . "nome.txt");
                         echo'
-                            <tr>
-                                <td>'.$s_nome.'</td>
-                                <td>'.$s_valor.'</td>
-                                <td>'.$s_hora.'</td>
-                                <td><span class="badge badge-success">Ativo</span></td>
-                            </tr> ';
+                        </div>
+                        <br>
+                        <div class="row">';
                     }
-                ?>
-                </table>
-            </div>
-        </div> 
+                }
+            ?>  
+        </div>
     </div>
 </body>
 </html>
