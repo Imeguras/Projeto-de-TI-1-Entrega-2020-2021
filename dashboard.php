@@ -112,7 +112,7 @@
                             <div class="card-header">
                                 '.$a_nome.': 
                                 <label class="switch">
-                                    <input class="checkbox" type="checkbox" '.$slider.'>
+                                    <input class="checkbox" type="checkbox" '.$slider.' value="'.$a_nome.'">
                                     <span class="slider round"></span>
                                 </label>    
                             </div>
@@ -142,10 +142,10 @@
             // is the default $(this).parent().parent().html
             $('.checkbox').click(function() {
                 if ($(this).is(':checked')) {
-                    var val = {'tipo':'atuadores', 'nome':'alarme', 'valor':'1'};
+                    var val = {'tipo':'atuadores', 'nome':$(this).val(), 'valor':'1'};
                     console.log(val)
                 }else{
-                    var val = {'tipo':'atuadores', 'nome':'alarme', 'valor':'0'};
+                    var val = {'tipo':'atuadores', 'nome':$(this).val(), 'valor':'0'};
                     console.log(val)
                 }
     
