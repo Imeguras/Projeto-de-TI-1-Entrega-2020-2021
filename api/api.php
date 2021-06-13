@@ -24,7 +24,7 @@
             $type = $_POST["tipo"];
             
             $spec_path = $files_path . $type . "/" . strtolower($name);
-            if (!isset($_POST["hora"]))
+            if (isset($_POST["hora"]))
             {
                 $date = $_POST["hora"];
                 $log = $date.";".$value.PHP_EOL;

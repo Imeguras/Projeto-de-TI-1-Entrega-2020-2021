@@ -142,11 +142,10 @@
             // is the default $(this).parent().parent().html
             $('.checkbox').click(function() {
                 if ($(this).is(':checked')) {
-                    
-                    var val = {'tipo':'atuadores', 'nome':'alarme', 'valor':'0'};
+                    var val = {'tipo':'atuadores', 'nome':'alarme', 'valor':'1'};
                     console.log(val)
                 }else{
-                    var val = {'tipo':'atuadores', 'nome':'alarme', 'valor':'1'};
+                    var val = {'tipo':'atuadores', 'nome':'alarme', 'valor':'0'};
                     console.log(val)
                 }
     
