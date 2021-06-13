@@ -14,20 +14,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta http-equiv="refresh" content="5">    
+    <!--meta http-equiv="refresh" content="5"-->    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    
+    <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
     
     <title> Plataforma IoT </title>
-    <style>
-        .card
-        {
-            text-align: center;
-        }
-    </style>
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -61,6 +56,7 @@
         <div class="row">
             <?php
                 $ct=0;
+                
                 foreach($sensors as $sensor)
                 {
                     $ct++;
@@ -96,6 +92,7 @@
         <hr>
         <div class="row">
             <?php
+                $slider="";
                 $ct=0;
                 foreach($actuators as $actuator)
                 {
@@ -104,20 +101,30 @@
                     $a_valor = file_get_contents($a_path . "valor.txt");
                     $a_hora = file_get_contents($a_path . "hora.txt");
                     $a_nome = file_get_contents($a_path . "nome.txt");
+
+                    if ($a_valor == 1)
+                    {
+                        $slider="checked";
+                    }
                     echo '
                     <div class="col-sm-4">
                         <div class="card">
                             <div class="card-header">
-                                '.$s_nome.': '.$s_valor.'
+                                '.$a_nome.': 
+                                <label class="switch">
+                                    <input class="checkbox" type="checkbox" '.$slider.' value="'.$a_nome.'">
+                                    <span class="slider round"></span>
+                                </label>    
                             </div>
                             <div class="card-body">
-                                <a href=""><img src="Ficheiros/'.$sensor.'.png" alt="" width="128" height="128"><a>
+                                <a href=""><img src="Ficheiros/'.$actuator.'.png" alt="" width="128" height="128"><a>
                             </div>
                             <div class="card-footer">
-                                Atualização: '.$s_hora.'
+                                Atualização: '.$a_hora.'
                             </div>
                         </div>
                     </div>';
+                    
                     if($ct%3==0)
                     {
                         echo'
@@ -129,5 +136,24 @@
             ?>  
         </div>
     </div>
+    <script>
+        $(document).ready(function() {
+            // It gets checked to false as uncheck
+            // is the default $(this).parent().parent().html
+            $('.checkbox').click(function() {
+                if ($(this).is(':checked')) {
+                    var val = {'tipo':'atuadores', 'nome':$(this).val(), 'valor':'1'};
+                    console.log(val)
+                }else{
+                    var val = {'tipo':'atuadores', 'nome':$(this).val(), 'valor':'0'};
+                    console.log(val)
+                }
+    
+                    $.post("api/api.php", val, function(result){
+                        console.log(result);
+                    });
+            });
+        });
+    </script>
 </body>
 </html>
