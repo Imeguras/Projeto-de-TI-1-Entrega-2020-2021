@@ -94,6 +94,7 @@
             <?php
                 $slider="";
                 $ct=0;
+                $inputtype="<input class='checkbox' type='checkbox' value='".$a_nome."' ".$slider.">\n<span class='slider round'></span>";
                 foreach($actuators as $actuator)
                 {
                     $ct++;
@@ -101,7 +102,9 @@
                     $a_valor = file_get_contents($a_path . "valor.txt");
                     $a_hora = file_get_contents($a_path . "hora.txt");
                     $a_nome = file_get_contents($a_path . "nome.txt");
-
+                    if($a_nome == "Ventoinha"){
+                        $inputtype="<div class='rangecontainer'>\n<input type='range' min='0' max='2' value='".$a_valor."' class='range'>\n</div>";
+                    }
                     if ($a_valor == 1)
                     {
                         $slider="checked";
@@ -112,8 +115,8 @@
                             <div class="card-header">
                                 '.$a_nome.': 
                                 <label class="switch">
-                                    <input class="checkbox" type="checkbox" '.$slider.' value="'.$a_nome.'">
-                                    <span class="slider round"></span>
+                                    '.$inputtype.'
+                                    
                                 </label>    
                             </div>
                             <div class="card-body">
@@ -148,7 +151,6 @@
                     var val = {'tipo':'atuadores', 'nome':$(this).val(), 'valor':'0'};
                     console.log(val)
                 }
-    
                     $.post("api/api.php", val, function(result){
                         console.log(result);
                     });

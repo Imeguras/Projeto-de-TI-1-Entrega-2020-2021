@@ -78,3 +78,45 @@ border-radius: 34px;
 {
 border-radius: 50%;
 }
+.rangecontainer {
+	width: 100% !important; /* Width of the outside container */
+	display: ruby;
+	margin-right: 50px;
+}
+  /* The slider itself */
+  .range {
+	-webkit-appearance: none;  /* Override default CSS styles */
+	appearance: none;
+	position: absolute;
+	width: 100% !important; /* Full-width */
+	height: 20px !important; /* Specified height */
+	background: #ccc; /* Grey background */
+	outline: none; /* Remove outline */
+	opacity: 0.7 !important; /* Set transparency (for mouse-over effects on hover) */
+	-webkit-transition: .2s; /* 0.2 seconds transition on hover */
+	transition: opacity .2s;
+	border-radius: 50px;
+  }
+  
+  /* Mouse-over effects */
+  .range:hover {
+	opacity: 1; /* Fully shown on mouse-over */
+  }
+  
+  /* The slider handle (use -webkit- (Chrome, Opera, Safari, Edge) and -moz- (Firefox) to override default look) */
+  .range::-webkit-slider-thumb {
+	-webkit-appearance: none; /* Override default look */
+	appearance: none;
+	
+	width: 15px; /* Set a specific slider handle width */
+	height: 15px; /* Slider handle height */
+	background: #fff; /* Green background */
+	cursor: pointer; /* Cursor on hover */
+  }
+  
+  .range::-moz-range-thumb {
+	width: 15px; /* Set a specific slider handle width */
+	height: 15px; /* Slider handle height */
+	background: #fff; /* Green background */
+	cursor: pointer; /* Cursor on hover */
+  }
