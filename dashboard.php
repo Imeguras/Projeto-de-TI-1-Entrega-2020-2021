@@ -14,11 +14,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta http-equiv="refresh" content="5">    
+    <!--meta http-equiv="refresh" content="5"-->    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
     
     <title> Plataforma IoT </title>
@@ -55,6 +56,7 @@
         <div class="row">
             <?php
                 $ct=0;
+                
                 foreach($sensors as $sensor)
                 {
                     $ct++;
@@ -90,6 +92,7 @@
         <hr>
         <div class="row">
             <?php
+                $slider="";
                 $ct=0;
                 foreach($actuators as $actuator)
                 {
@@ -101,7 +104,7 @@
 
                     if ($a_valor == 1)
                     {
-
+                        $slider="checked";
                     }
                     echo '
                     <div class="col-sm-4">
@@ -109,9 +112,9 @@
                             <div class="card-header">
                                 '.$a_nome.': 
                                 <label class="switch">
-                                    <input type="checkbox">
+                                    <input class="checkbox" type="checkbox" '.$slider.'>
                                     <span class="slider round"></span>
-                                </label>
+                                </label>    
                             </div>
                             <div class="card-body">
                                 <a href=""><img src="Ficheiros/'.$actuator.'.png" alt="" width="128" height="128"><a>
@@ -121,6 +124,7 @@
                             </div>
                         </div>
                     </div>';
+                    
                     if($ct%3==0)
                     {
                         echo'
@@ -132,5 +136,19 @@
             ?>  
         </div>
     </div>
+    <script>
+        $(document).ready(function() {
+            // It gets checked to false as uncheck
+            // is the default
+            $('.checkbox').click(function() {
+                if ($(this).is(':checked')) {
+                    $.post("api/api.php", function(data, status){
+                        alert("Data: " + data + "\nStatus: " + status);
+                    });
+                }
+                
+            });
+        });
+    </script>
 </body>
 </html>
