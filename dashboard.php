@@ -139,14 +139,20 @@
     <script>
         $(document).ready(function() {
             // It gets checked to false as uncheck
-            // is the default
+            // is the default $(this).parent().parent().html
             $('.checkbox').click(function() {
                 if ($(this).is(':checked')) {
-                    $.post("api/api.php", function(data, status){
-                        alert("Data: " + data + "\nStatus: " + status);
-                    });
+                    
+                    var val = {'tipo':'atuadores', 'nome':'alarme', 'valor':'0'};
+                    console.log(val)
+                }else{
+                    var val = {'tipo':'atuadores', 'nome':'alarme', 'valor':'1'};
+                    console.log(val)
                 }
-                
+    
+                    $.post("api/api.php", val, function(result){
+                        console.log(result);
+                    });
             });
         });
     </script>
