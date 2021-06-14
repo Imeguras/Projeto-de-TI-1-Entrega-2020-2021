@@ -9,10 +9,11 @@ def send_status():
     r = requests.post('http://127.0.0.1/ProjetoTI/api/api.php', val)
 
 def image_capture():
-    try:
-        camera = cv.VideoCapture(f"{phoneip}/video")
-    except:
-        camera = cv.VideoCapture(0)
+    #try:
+    #    print("hello1")
+    #    camera = cv.VideoCapture(f"{phoneip}/video")
+    #except:
+    camera = cv.VideoCapture(0)
     ret, image = camera.read()
     cv.imwrite('Ficheiros/Camara.jpg', image)
     camera.release()
@@ -21,7 +22,7 @@ def image_capture():
 
 try:
     while True:
-        r=requests.get('http://127.0.0.1/ProjetoTI/api/api.php?tipo=atuadores&nome=camara')
+        r=requests.get('http://127.0.0.1/api/api.php?tipo=atuadores&nome=camara')
         status = r.status_code
         if status == 200:
             value = int(r._content)
