@@ -1,0 +1,28 @@
+$ct=0;
+$s_path = $sensors_path. $sensor ."/";
+$s_valor = file_get_contents($s_path . "valor.txt");
+$s_hora = file_get_contents($s_path . "hora.txt");
+$s_nome = file_get_contents($s_path . "nome.txt");
+
+if (file_exists($s_path . "range.txt"))
+{
+    $range = file_get_contents($s_path . "range.txt");
+    $min = explode("-", $range)[0];
+    $max = explode("-", $range)[1];
+    $crit = explode("-", $range)[2];
+    if ($s_valor >= $crit)
+    {
+        $btn = "btn btn-danger";
+        $btn_text = "Perigo!!!";
+    }
+    elseif ($s_valor >= $max || $s_valor < $min)
+    {
+        $btn = "btn btn-warning";
+        $btn_text = "Aviso!";
+    }
+    else
+    {
+        $btn = "btn btn-success";
+        $btn_text = "Estável";
+    }
+}   

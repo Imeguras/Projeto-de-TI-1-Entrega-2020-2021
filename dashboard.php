@@ -14,7 +14,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!--meta http-equiv="refresh" content="5"-->    
+    <meta http-equiv="refresh" content="5">    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="styles.css">
@@ -52,7 +52,7 @@
         <p>".$tab."Tecnologias de Internet - Engenharia Informática</p>";
         ?>
     </div>
-    <div class="container">
+    <div id="images" class="container">
         <div class="row">
             <?php
                 $ct=0;
@@ -70,8 +70,18 @@
                             <div class="card-header">
                                 '.$s_nome.': '.$s_valor.'
                             </div>
-                            <div class="card-body">
-                                <a href=""><img src="Ficheiros/'.$sensor.'.png" alt="" width="128" height="128"><a>
+                            <div class="card-body">';
+
+                            if ($s_nome == "faseDia")
+                            {
+                                echo '<a href=""><img src="Ficheiros/'.$sensor."_".$s_valor.'.png" alt="" width="128" height="128"><a>';
+                            }
+                            else
+                            {
+                                echo '<a href=""><img src="Ficheiros/'.$sensor.'.png" alt="" width="128" height="128"><a>';
+                            }
+                            
+                    echo'
                             </div>
                             <div class="card-footer">
                                 Atualização: '.$s_hora.'
@@ -101,10 +111,32 @@
                     $a_valor = file_get_contents($a_path . "valor.txt");
                     $a_hora = file_get_contents($a_path . "hora.txt");
                     $a_nome = file_get_contents($a_path . "nome.txt");
-
                     if ($a_valor == 1)
                     {
                         $slider="checked";
+                    }
+                    else
+                    {
+                        $slider="";
+                    }
+
+                    if($a_nome == "Ventoinha"){
+                        $inputtype="<div class='rangecontainer'>\n<input type='range' min='0' max='2' name='".$a_nome."'value='".$a_valor."' class='range'>\n</div>";
+                    }
+                    else
+                    {
+                        $inputtype="<input class='checkbox' type='checkbox' ".$slider." value='".$a_nome."'><span class='slider round'></span>";
+                    }
+
+                    if($a_nome == "Camara")
+                    {
+                        $image = "Ficheiros/". $a_nome .".jpg";
+                        $size = "style='width:100%;height:100%;'";
+                    }
+                    else
+                    {
+                        $image = "Ficheiros/" . $a_nome . "_" . $a_valor . ".png";
+                        $size = "width='128' height='128'";
                     }
                     echo '
                     <div class="col-sm-4">
@@ -112,12 +144,11 @@
                             <div class="card-header">
                                 '.$a_nome.': 
                                 <label class="switch">
-                                    <input class="checkbox" type="checkbox" '.$slider.' value="'.$a_nome.'">
-                                    <span class="slider round"></span>
+                                    '.$inputtype.'
                                 </label>    
                             </div>
                             <div class="card-body">
-                                <a href=""><img src="Ficheiros/'.$actuator.'.png" alt="" width="128" height="128"><a>
+                                <a href=""><img class="img" src="'. $image .'?id='.time().'" alt="" '.$size.'><a>
                             </div>
                             <div class="card-footer">
                                 Atualização: '.$a_hora.'
@@ -143,15 +174,26 @@
             $('.checkbox').click(function() {
                 if ($(this).is(':checked')) {
                     var val = {'tipo':'atuadores', 'nome':$(this).val(), 'valor':'1'};
-                    console.log(val)
+                    if($(this).val()=="Camara")
+                    {
+                        setTimeout(function(){location.reload(true);}, 1500);
+                    }
+                    else
+                    {
+                        setTimeout(function(){location.reload(true);}, 400);
+                    }
+                    
                 }else{
                     var val = {'tipo':'atuadores', 'nome':$(this).val(), 'valor':'0'};
-                    console.log(val)
+                    setTimeout(function(){location.reload(true);}, 400);
                 }
     
-                    $.post("api/api.php", val, function(result){
-                        console.log(result);
-                    });
+                    $.post("api/api.php", val, function(result){});
+            });
+            $('.range').on('change', function() {
+                    var val = {'tipo':'atuadores', 'nome':$(this).attr('name'), 'valor':$(this).val()};
+                    $.post("api/api.php", val, function(result){});
+                    location.reload(true);
             });
         });
     </script>
